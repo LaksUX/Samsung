@@ -1,0 +1,15 @@
+"use client";
+
+import { useEffect } from "react";
+
+export function ServiceWorkerRegistration() {
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js").catch(() => {
+        // Fails silently — the dashboard works fine without it,
+        // it just won't be installable as an app.
+      });
+    }
+  }, []);
+  return null;
+}
